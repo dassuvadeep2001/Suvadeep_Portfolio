@@ -1,0 +1,44 @@
+.profile-sec{
+  background:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url('../../../public/image/img1.webp'); 
+  background-size: cover;   
+  background-position: center;  
+  background-repeat: no-repeat; 
+  padding: 20px;
+}
+.image {
+    height: 400px;
+    width: 400px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ffffff;
+}
+input{
+   height: 40px;
+   width:100%;
+   padding: 20px 10px;
+   background-color: transparent;
+   border: 2px solid white;
+   border-radius: 10px;
+   color: white;
+}
+label{
+  font-size: 20px;
+  color: aliceblue;
+  margin: 10px 0px;
+}
+.edit-btn{
+    width: 200px;
+}
+.add-btn{
+  /* width: 100%; */
+  margin-top: 90px;
+  background-color: transparent;
+}
+.link1{
+  color: white;
+}
+.link1:hover{
+  color: black;
+  background-color: white;
+}
+

@@ -1,0 +1,22 @@
+.recipeform-back{
+    background:url('../../../../public/image/formbanner.png');
+    background-size: cover;   
+    background-position: center;  
+    background-repeat: no-repeat; 
+    padding: 60px 100px;
+}
+.recipeform{
+    background: linear-gradient(to top,rgba(255, 255, 255, 0.555),rgba(255, 255, 255, 0.659));
+    border-radius: 20px;
+    width: 700px;
+    padding: 50px 70px;
+}
+.recipeform-head{
+    font-size: 40px;
+    color: brown;
+    margin: 30px 0px;
+}
+.recipe-submit-button{
+    margin-top: 50px;
+    width: 100%;
+}

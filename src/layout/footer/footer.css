@@ -1,0 +1,32 @@
+.footer{
+   background-color: rgb(234, 197, 151);
+    padding-top: 0px;
+}
+.footerr{
+    background-color: rgb(207, 150, 81);
+}
+.footerr h3{
+    font-size: 15px;
+    color: white;
+    font-weight: 300;
+    padding: 10px;
+
+}
+.footerr h3 i{
+    color: rgb(111, 2, 2);
+    font-weight: 500;
+}
+.footerr h3 span{
+    color: red;
+    font-size: 20px;
+}
+.part{
+    margin-top: 30px;
+    /* margin-left: 100px; */
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-bottom: 30px;
+}
+#head{
+    color: brown;
+}

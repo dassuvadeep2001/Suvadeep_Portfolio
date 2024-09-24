@@ -1,0 +1,19 @@
+.recipe1-sec{
+  background:linear-gradient(rgba(0, 0, 0, 0.650),rgba(0, 0, 0, 0.650)),url('../../../public/image/foodbanner.avif'); 
+  background-size: cover;   
+  background-position: center;  
+  background-repeat: no-repeat; 
+  padding: 60px;
+}
+
+.recipe-heading-sec{
+  padding: 30px 50px;
+}
+.recipe-heading{
+  font-size: 30px;
+  color: white;
+}
+.recipe-paragraph{
+  color: white;
+  font-size: 20px;
+}

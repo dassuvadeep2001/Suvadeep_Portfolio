@@ -1,0 +1,16 @@
+.back{
+    width: 650px;
+    justify-content: center;
+    /* background-color: rgba(127, 113, 113, 0.348); */
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px rgb(116, 109, 109);
+    margin-bottom: 30px;
+}
+.review{
+    color: green;
+    margin-bottom: 10px;
+}
+.form{
+    padding: 20px 40px;
+    margin-top: 10px;
+}

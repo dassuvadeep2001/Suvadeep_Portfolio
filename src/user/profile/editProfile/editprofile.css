@@ -1,0 +1,47 @@
+.editprofile-container {
+    position: fixed;
+    top: 0;
+    left: -100%; /* Initially hidden on the left */
+    width: 500px;
+    height: 100%;
+    background-color: white;
+    box-shadow: 5px 0 5px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
+  }
+  
+  /* Visible state: slide in from left */
+  .editprofile-container.open {
+    left: 0; /* Moves it into view */
+  }
+  
+  .editform {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #formlabel {
+    font-size: 20px;
+    color: black;
+    margin: 0px 0px;
+  }
+  
+  #forminput {
+    margin: 0px 0px;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    color: black;
+  }
+  #formimage{
+    color: black;
+    padding-top: 0px;
+    padding-left: 0px;
+    border-radius: 0px;
+    border: 0px;
+  }
+  
+  .update-button {
+    margin-top: 20px;
+    width: 100%;
+  }
