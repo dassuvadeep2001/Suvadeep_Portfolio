@@ -37,7 +37,7 @@ let navigate=useNavigate()
     <>
       <Navbar expand="lg" id='nav1'>
         <Container>
-          <Navbar.Brand href="#" className='mx-auto fs-6 text-warning'>The CookBook App is brought to you by CookBook Co. Pty Ltd.</Navbar.Brand>
+          <Navbar.Brand href="#" className='nav1-head mx-auto text-warning'>The CookBook App is brought to you by CookBook Co. Pty Ltd.</Navbar.Brand>
         </Container>
       </Navbar >
     <Navbar expand="lg" id='nav2'>

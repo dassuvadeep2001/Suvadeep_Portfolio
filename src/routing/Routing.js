@@ -17,6 +17,7 @@ import Recipe from '../component/recipe/recipe'
 import Details from '../component/recipe/category/details/details'
 import RecipeList from '../component/recipe/category/recipewise'
 import Editrecipe from '../component/recipe/category/details/edit Details/Editdeatils'
+import Pagenotfound from '../component/pnf/pnf'
 
 function Routing() {
   return (
@@ -24,6 +25,7 @@ function Routing() {
       <Header/>
         <Routes>
         <Route path="" element={<Home/>}/>
+        <Route path="*" element={<Pagenotfound/>}/>
         <Route path="/about" element={<About/>}/>
         <Route path="review" element={<Review/>}/>
         <Route path="reviewform" element={<Reviewform/>}/>
