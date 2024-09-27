@@ -18,8 +18,8 @@
 }
 #search{
     width: 500px;
-    border: 2px solid rgb(0, 0, 0);
-    color: rgb(0, 0, 0);
+    border: 2px solid rgb(153, 0, 0);
+    color: rgb(203, 0, 0);
     border-radius: 20px;
     font-size: 18px;
     padding-left:  30px;
@@ -32,5 +32,11 @@
     position: relative;
     display: flex;
     align-items: center;
+  }
+  .search-icon{
+    position: relative;
+    color: brown;
+    right: 40px;
+    bottom: 25px;
   }
   
