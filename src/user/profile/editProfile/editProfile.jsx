@@ -7,10 +7,10 @@ import './editprofile.css';
 
 function EditProfile({ showEditProfile, onClose }) {
   const navigate = useNavigate();
-  let { id } = useParams();
-  let api = base_url + end_url.user + `${id}`;
+  const { id } = useParams();
+  const api = `${base_url}${end_url.user}${id}`;
 
-  let [state, setState] = useState({
+  const [state, setState] = useState({
     fname: '',
     lname: '',
     email: '',
@@ -30,7 +30,7 @@ function EditProfile({ showEditProfile, onClose }) {
 
   useEffect(() => {
     getDetails();
-  }, [setState, api]);
+  }, [api]);
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
@@ -45,7 +45,7 @@ function EditProfile({ showEditProfile, onClose }) {
     axios.put(`http://localhost:1000/user/${id}`, state)
       .then((res) => {
         alert("Data Updated Successfully");
-        onClose();  // Hide the EditProfile component after update
+        onClose();
         navigate(`/profile/${id}`);
       })
       .catch((err) => {
@@ -73,53 +73,25 @@ function EditProfile({ showEditProfile, onClose }) {
   return (
     <div className={`editprofile-container ${showEditProfile ? 'open' : ''}`}>
       <Container>
+        <h5 className='edit-head'>Edit Your Profile</h5>
         <form onSubmit={submitHandler} className='editform'>
-          <label htmlFor="fname" id='formlabel'>First Name</label><br />
-          <input
-            type='text'
-            name='fname'
-            value={state.fname}
-            onChange={changeHandler}
-            id='forminput'
-          />
-          <br />
-          <label htmlFor="lname" id='formlabel'>Last Name</label><br />
-          <input
-            type='text'
-            name='lname'
-            value={state.lname}
-            onChange={changeHandler}
-            id='forminput'
-          />
-          <br />
-          <label htmlFor="email" id='formlabel'>Email</label><br />
-          <input
-            type='text'
-            name='email'
-            value={state.email}
-            onChange={changeHandler}
-            id='forminput'
-          />
-          <br />
-          <label htmlFor="password" id='formlabel'>Password</label><br />
-          <input
-            type='text'
-            name='password'
-            value={state.password}
-            onChange={changeHandler}
-            id='forminput'
-          />
-          <br />
-          <label htmlFor="image" id='formlabel'>Image</label><br />
-          <input
-            type='file'
-            name='image'
-            onChange={handleFileChange}
-            id='formimage'
-          />
-          <br />
-          <div className="d-flex justify-content-center">
-            <Button variant="outline-dark" className='update-button' type="submit">Update</Button>
+          <label htmlFor="fname">First Name</label>
+          <input type='text' name='fname' value={state.fname} onChange={changeHandler} />
+
+          <label htmlFor="lname">Last Name</label>
+          <input type='text' name='lname' value={state.lname} onChange={changeHandler} />
+
+          <label htmlFor="email">Email</label>
+          <input type='email' name='email' value={state.email} onChange={changeHandler} />
+
+          <label htmlFor="password">Password</label>
+          <input type='password' name='password' value={state.password} onChange={changeHandler} />
+
+          <label htmlFor="image">Image</label>
+          <input type='file' name='image' onChange={handleFileChange} />
+
+          <div className="button-container">
+            <Button variant="outline-dark" type="submit">Update</Button>
           </div>
         </form>
       </Container>

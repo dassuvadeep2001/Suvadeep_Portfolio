@@ -1,16 +1,68 @@
-.back{
-    width: 650px;
-    justify-content: center;
-    /* background-color: rgba(127, 113, 113, 0.348); */
+/* Main section styles */
+.reviewform-section {
+    padding: 20px;
+}
+
+.back {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
     border-radius: 10px;
-    box-shadow: 10px 10px 15px rgb(116, 109, 109);
-    margin-bottom: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-.review{
-    color: green;
-    margin-bottom: 10px;
+
+/* Form header styling */
+.review {
+    font-size: 1.25rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #028900;
 }
-.form{
-    padding: 20px 40px;
-    margin-top: 10px;
+.label1{
+     display: flex;
+     justify-content: flex-start;
+     margin-top: 12px;
 }
+
+/* Label styling */
+.text-dark-emphasis {
+    color: #555;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+/* Star rating styling */
+.star-rating {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* Center align submit button */
+.submit-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+/* Responsive design */
+@media (max-width: 576px) {
+    .back {
+        padding: 15px;
+    }
+
+    .review {
+        font-size: 1rem;
+    }
+
+    .text-dark-emphasis {
+        font-size: 0.9rem;
+    }
+
+    .submit-button {
+        justify-content: center;
+    }
+}
+

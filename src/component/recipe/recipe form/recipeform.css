@@ -1,22 +1,125 @@
-.recipeform-back{
-    background:url('../../../../public/image/formbanner.png');
-    background-size: cover;   
-    background-position: center;  
-    background-repeat: no-repeat; 
-    padding: 60px 100px;
-}
-.recipeform{
-    background: linear-gradient(to top,rgba(255, 255, 255, 0.555),rgba(255, 255, 255, 0.659));
-    border-radius: 20px;
-    width: 700px;
-    padding: 50px 70px;
-}
-.recipeform-head{
-    font-size: 40px;
-    color: brown;
-    margin: 30px 0px;
-}
-.recipe-submit-button{
-    margin-top: 50px;
+/* Background Styling */
+.recipeform-back {
+    background: linear-gradient(135deg, #00000060, #00000069), url('../../../../public/image/form.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+  }
+  
+  /* Container Styling */
+  .recipeform-container {
+    background-color: #ffffffb0;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
     width: 100%;
-}
+  }
+  
+  /* Header Styling */
+  .recipeform-head {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: #343a40;
+    font-weight: 700;
+  }
+  
+  /* Form Styling */
+  .recipeform-form {
+    width: 100%;
+  }
+  
+  /* Form Labels */
+  .form-label {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Form Inputs */
+  .form-input {
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .form-input:focus {
+    border-color: #495057;
+    box-shadow: none;
+  }
+  
+  /* Invalid Inputs */
+  .is-invalid {
+    border-color: #dc3545 !important;
+  }
+  
+  .invalid-feedback {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }
+  
+  /* Submit Button */
+  .recipe-submit-button {
+    background-color: #343a40;
+    color: #ffffff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .recipe-submit-button:hover {
+    background-color: #495057;
+    transform: translateY(-2px);
+  }
+  
+  .recipe-submit-button:disabled {
+    background-color: #adb5bd;
+    cursor: not-allowed;
+  }
+  
+  /* Responsive Design */
+  
+  /* Tablets and Small Desktops */
+  @media (max-width: 992px) {
+    .recipeform-container {
+      padding: 2rem;
+    }
+  
+    .recipeform-head {
+      font-size: 1.75rem;
+    }
+  }
+  
+  /* Mobile Devices */
+  @media (max-width: 576px) {
+    .recipeform-container {
+      padding: 1.5rem;
+    }
+  
+    .recipeform-head {
+      font-size: 1.5rem;
+    }
+  
+    .form-label {
+      font-size: 0.95rem;
+    }
+  
+    .form-input {
+      padding: 0.5rem 0.75rem;
+    }
+  
+    .recipe-submit-button {
+      width: 100%;
+      padding: 0.6rem;
+    }
+  }
+  

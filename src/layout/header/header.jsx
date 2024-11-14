@@ -1,23 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import "./header.css"
+import React, { useEffect, useState } from 'react';
+import { Container, Nav, Navbar, NavDropdown, Form, Button, Row, Col } from 'react-bootstrap';
 import { FaUtensils } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
-
+import './header.css';
 
 function Header() {
   const [userId, setUserId] = useState(null);
-let navigate=useNavigate()
+  const navigate = useNavigate();
+
   useEffect(() => {
-    
-    // Get user ID from localStorage
     const storedUserId = localStorage.getItem('userId');
     if (storedUserId) {
       setUserId(storedUserId);
@@ -25,54 +16,56 @@ let navigate=useNavigate()
   }, []);
 
   const handleProfileClick = () => {
-    if (userId===null) {
-      // Navigate to the login page if userId is not present
+    if (!userId) {
       navigate('/login');
     } else {
-       // Navigate to the profile page if userId is present
-       navigate(`/profile/${userId}`);
+      navigate(`/profile/${userId}`);
     }
   };
+
   return (
     <>
-      <Navbar expand="lg" id='nav1'>
+      <Navbar expand="lg" className="nav1">
         <Container>
-          <Navbar.Brand href="#" className='nav1-head mx-auto text-warning'>The CookBook App is brought to you by CookBook Co. Pty Ltd.</Navbar.Brand>
+          <h2 id="nav1-head" className='d-flex justify-content-center mx-auto'>
+            The CookBook App is brought to you by CookBook Co. Pvt Ltd.
+          </h2>
         </Container>
-      </Navbar >
-    <Navbar expand="lg" id='nav2'>
-      <Container>
-        <Navbar.Brand className='logo fs-3 text-white'> <span><FaUtensils size={35} color="white" /></span> CookBook</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mx-auto">
-            <Nav.Link as={ Link } to="" id='menu'>Home</Nav.Link>
-            <Nav.Link as={ Link } to="category" id='menu'>Our Recipes</Nav.Link>
-            <Nav.Link as={ Link } to="review" id='menu'>Testimonial</Nav.Link>
-            <NavDropdown title="User" id="dropdown">
-              <NavDropdown.Item as={ Link } to="/login">
-                Sign-In
-              </NavDropdown.Item >
-              <NavDropdown.Item as={ Link } to="/registration">Sign-Up</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item onClick={handleProfileClick}>
-                Profile
-              </NavDropdown.Item>
-            </NavDropdown>
-            <Nav.Link as={ Link } to="contact" id='menu'>Contact Us</Nav.Link>
-          </Nav>
-          <Form inline>
-        <Row>
-          <Col xs="auto">
-            <Button variant='outline-light' type="submit" id='btn'><Link className='link1' to="/start">Get Started</Link></Button>
-          </Col>
-        </Row>
-      </Form>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+      </Navbar>
+      <Navbar expand="lg" className="nav2">
+        <Container>
+          <h2 className="logo">
+            <FaUtensils className="logo-icon" /> CookBook
+          </h2>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mx-auto nav-menu">
+              <Nav.Link as={Link} to="/" id="menu-item">Home</Nav.Link>
+              <Nav.Link as={Link} to="about" id="menu-item">About Us</Nav.Link>
+              <Nav.Link as={Link} to="category" id="menu-item">Our Recipes</Nav.Link>
+              <Nav.Link as={Link} to="review" id="menu-item">Testimonial</Nav.Link>
+              <NavDropdown title="User" id="user-dropdown">
+                <NavDropdown.Item as={Link} to="/login">Sign-In</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/registration">Sign-Up</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item onClick={handleProfileClick}>Profile</NavDropdown.Item>
+              </NavDropdown>
+              <Nav.Link as={Link} to="contact" id="menu-item">Contact Us</Nav.Link>
+            </Nav>
+            <Form className="get-started-form">
+              <Row>
+                <Col xs="auto">
+                  <Button type="submit" id="get-started-btn">
+                    <Link className="link-start" to="/start">Get Started</Link>
+                  </Button>
+                </Col>
+              </Row>
+            </Form>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </>
-  )
+  );
 }
 
-export default Header
+export default Header;

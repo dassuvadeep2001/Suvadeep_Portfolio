@@ -1,44 +1,113 @@
-.profile-sec{
-  background:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url('../../../public/image/img1.webp'); 
+.profile-sec {
+  padding: 2rem;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url('../../../public/image/img1.webp'); 
   background-size: cover;   
   background-position: center;  
-  background-repeat: no-repeat; 
-  padding: 20px;
+  background-repeat: no-repeat;
+  color: #fff;
 }
-.image {
-    height: 400px;
-    width: 400px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #ffffff;
+#recipeform-head{
+  color: rgb(5, 95, 0);
+  text-align: center;
+  margin-bottom: 20px;
 }
-input{
-   height: 40px;
-   width:100%;
-   padding: 20px 10px;
-   background-color: transparent;
-   border: 2px solid white;
-   border-radius: 10px;
-   color: white;
-}
-label{
-  font-size: 20px;
-  color: aliceblue;
-  margin: 10px 0px;
-}
-.edit-btn{
-    width: 200px;
-}
-.add-btn{
-  /* width: 100%; */
-  margin-top: 90px;
-  background-color: transparent;
-}
-.link1{
-  color: white;
-}
-.link1:hover{
-  color: black;
-  background-color: white;
+.title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 4rem;
 }
 
+.subtitle {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.img-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.profile-image {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 50%;
+  height: auto;
+}
+
+.add-recipe-link {
+  color: #fff;
+  text-decoration: none;
+}
+.add-recipe-link:hover {
+  color: #000000;
+  text-decoration: none;
+}
+
+.profile-details {
+  padding-left: 1.5rem;
+}
+
+.profile-form label {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+}
+
+.edit-profile-btn, .logout-btn {
+  width: 45%;
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .profile-sec {
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.3rem;
+  }
+
+  .profile-details {
+    padding: 0;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .edit-profile-btn, .logout-btn {
+    width: 100%;
+  }
+
+  .img-container, .add-recipe-btn {
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .input-field {
+    font-size: 0.9rem;
+  }
+}

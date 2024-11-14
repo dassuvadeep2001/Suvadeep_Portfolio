@@ -3,106 +3,127 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Container } from "react-bootstrap";
 import { useFormik } from "formik";
-import "./recipeform.css"
+import "./recipeform.css";
 import axios from "axios";
 import base_url, { end_url } from "../../../api/api_url";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 const RecipeForm = () => {
+  const api = `${base_url}${end_url.recipe}`;
+  console.log("API Endpoint:", api);
 
-let api=base_url+end_url.recipe
-console.log("api",api);
+  // Base64 conversion
+  const getBase64 = (file) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = reject;
+    });
 
-  //base64 conversion
- const getBase64 = file => new Promise((resolve, reject) => {
-  const reader = new FileReader();
-  reader.readAsDataURL(file);
-  reader.onload = () => resolve(reader.result);
-  reader.onerror = reject;
-});
+  // Validation Function
+  const validate = (data) => {
+    let errors = {};
 
-  const validator = (data) => {
-    let err = {};
-    //name
-    if (!data.email) err.email = "required field";
-    //name
-    if (!data.name) err.name = "required field";
-    //ingredients
-    if (!data.ingredients) err.ingredients = "required field";
-    //instructions
-    if (!data.instructions) err.instructions = "required field";
-    //time
-    if (!data.time) err.time = "required field";
-    //category
-    if (!data.category) err.category = "required field";
-    //tag
-    if (!data.tag) err.tag = "required field";
-    //made-in
-    if (!data.calories) err.calories = "required field";
+    if (!data.email) errors.email = "Email is required";
+    else if (
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(data.email)
+    )
+      errors.email = "Invalid email address";
 
-    return err;
+    if (!data.name) errors.name = "Recipe name is required";
+
+    if (!data.ingredients) errors.ingredients = "Ingredients are required";
+
+    if (!data.instructions) errors.instructions = "Instructions are required";
+
+    if (!data.time) errors.time = "Cooking time is required";
+
+    if (!data.category) errors.category = "Category is required";
+
+    if (!data.tag) errors.tag = "Tag is required";
+
+    if (!data.calories) errors.calories = "Calories are required";
+    else if (isNaN(data.calories)) errors.calories = "Calories must be a number";
+
+    return errors;
   };
-  let formik = useFormik({
+
+  // Formik Setup
+  const formik = useFormik({
     initialValues: {
-      email:"",
-      name:"",
+      email: "",
+      name: "",
       ingredients: "",
       instructions: "",
       time: "",
       category: "",
       tag: "",
       calories: "",
-      image:""
+      image: "",
     },
-    validate: validator,
-    onSubmit: (values) => {
-      console.log("Submitted values", values);
-      axios.post(api,values)
-          .then(response => {
-              console.log("response from api:", response.data);
-              Swal.fire({
-                title: "Good job!",
-                text: "Recipe Added Successfully",
-                icon: "success"
-              });
-          })
-          .catch(error => {
-              console.log("error", error);
-              alert("Failed to add Recipe")
-          });
-  }
+    validate,
+    onSubmit: async (values, { resetForm }) => {
+      try {
+        // If an image is selected, ensure it's in base64
+        if (values.image && typeof values.image !== "string") {
+          values.image = await getBase64(values.image);
+        }
+
+        console.log("Submitted values", values);
+        const response = await axios.post(api, values);
+        console.log("Response from API:", response.data);
+        Swal.fire({
+          title: "Good job!",
+          text: "Recipe Added Successfully",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
+        resetForm();
+      } catch (error) {
+        console.error("Error:", error);
+        Swal.fire({
+          title: "Oops!",
+          text: "Failed to add Recipe",
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+      }
+    },
   });
 
   return (
     <section className="recipeform-back">
-      <div className="recipeform">
-      <h2 className="recipeform-head">
-        Add Your Recipe...In Our CookBook Page...
-      </h2>
-        <Container className="">
-          <Form onSubmit={formik.handleSubmit}>
-
-          <Form.Group className="mb-2" controlId="email">
-              <Form.Label className=" text-dark-emphasis">
-              Email ID
-              </Form.Label>
+      <div className="recipeform-container">
+        <h2 id="recipeform-head">
+          Add Your Recipe to Our Cookbook
+        </h2>
+        <Container>
+          <Form onSubmit={formik.handleSubmit} className="recipeform-form">
+            {/* Email Field */}
+            <Form.Group className="mb-3" controlId="email">
+              <Form.Label className="form-label">Email ID</Form.Label>
               <Form.Control
                 type="email"
-                placeholder="Enter your Email Id"
+                placeholder="Enter your Email ID"
                 name="email"
                 value={formik.values.email}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
+                className={`form-input ${
+                  formik.touched.email && formik.errors.email
+                    ? "is-invalid"
+                    : ""
+                }`}
               />
-              {formik.touched.email && formik.errors.email ? (
-                <p className="text-end text-danger">{formik.errors?.email}</p>
-              ) : null}
+              {formik.touched.email && formik.errors.email && (
+                <div className="invalid-feedback">{formik.errors.email}</div>
+              )}
             </Form.Group>
 
-          <Form.Group className="mb-2" controlId="name">
-              <Form.Label className=" text-dark-emphasis">
-              Recipe Name
-              </Form.Label>
+            {/* Recipe Name Field */}
+            <Form.Group className="mb-3" controlId="name">
+              <Form.Label className="form-label">Recipe Name</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter the name of your recipe"
@@ -110,16 +131,20 @@ console.log("api",api);
                 value={formik.values.name}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
+                className={`form-input ${
+                  formik.touched.name && formik.errors.name
+                    ? "is-invalid"
+                    : ""
+                }`}
               />
-              {formik.touched.name && formik.errors.name ? (
-                <p className="text-end text-danger">{formik.errors?.name}</p>
-              ) : null}
+              {formik.touched.name && formik.errors.name && (
+                <div className="invalid-feedback">{formik.errors.name}</div>
+              )}
             </Form.Group>
 
-            <Form.Group className="mb-2" controlId="ingredients">
-              <Form.Label className=" text-dark-emphasis">
-              Ingredients
-              </Form.Label>
+            {/* Ingredients Field */}
+            <Form.Group className="mb-3" controlId="ingredients">
+              <Form.Label className="form-label">Ingredients</Form.Label>
               <Form.Control
                 as="textarea"
                 rows={3}
@@ -128,91 +153,123 @@ console.log("api",api);
                 value={formik.values.ingredients}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
+                className={`form-input ${
+                  formik.touched.ingredients && formik.errors.ingredients
+                    ? "is-invalid"
+                    : ""
+                }`}
               />
-              {formik.touched.ingredients && formik.errors.ingredients ? (
-                <p className="text-end text-danger">{formik.errors?.ingredients}</p>
-              ) : null}
+              {formik.touched.ingredients && formik.errors.ingredients && (
+                <div className="invalid-feedback">
+                  {formik.errors.ingredients}
+                </div>
+              )}
             </Form.Group>
 
-            <Form.Group className="mb-2" controlId="instructions">
-              <Form.Label className=" text-dark-emphasis">Instructions</Form.Label>
+            {/* Instructions Field */}
+            <Form.Group className="mb-3" controlId="instructions">
+              <Form.Label className="form-label">Instructions</Form.Label>
               <Form.Control
-               as="textarea"
-               rows={4}
+                as="textarea"
+                rows={4}
                 placeholder="Enter the instructions of your recipe"
                 name="instructions"
                 value={formik.values.instructions}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
+                className={`form-input ${
+                  formik.touched.instructions && formik.errors.instructions
+                    ? "is-invalid"
+                    : ""
+                }`}
               />
-              {formik.touched.instructions && formik.errors.instructions ? (
-                <p className="text-end text-danger">{formik.errors?.instructions}</p>
-              ) : null}
+              {formik.touched.instructions && formik.errors.instructions && (
+                <div className="invalid-feedback">
+                  {formik.errors.instructions}
+                </div>
+              )}
             </Form.Group>
 
-            <Form.Group className="mb-2" controlId="time">
-              <Form.Label className=" text-dark-emphasis">Time</Form.Label>
+            {/* Cooking Time Field */}
+            <Form.Group className="mb-3" controlId="time">
+              <Form.Label className="form-label">Cooking Time</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter the cooking time"
+                placeholder="Enter the cooking time (e.g., 30 minutes)"
                 name="time"
                 value={formik.values.time}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
+                className={`form-input ${
+                  formik.touched.time && formik.errors.time
+                    ? "is-invalid"
+                    : ""
+                }`}
               />
-              {formik.touched.time && formik.errors.time ? (
-                <p className="text-end text-danger">{formik.errors?.time}</p>
-              ) : null}
+              {formik.touched.time && formik.errors.time && (
+                <div className="invalid-feedback">{formik.errors.time}</div>
+              )}
             </Form.Group>
-            
-            <Form.Group className="mb-2" controlId="category">
-              <Form.Label className="text-dark-emphasis">Category of Recipe</Form.Label>
+
+            {/* Category Field */}
+            <Form.Group className="mb-3" controlId="category">
+              <Form.Label className="form-label">Category of Recipe</Form.Label>
               <Form.Select
-                aria-label="Default select example"
+                aria-label="Select recipe category"
                 name="category"
                 value={formik.values.category}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
+                className={`form-input ${
+                  formik.touched.category && formik.errors.category
+                    ? "is-invalid"
+                    : ""
+                }`}
               >
                 <option value="">Select</option>
-                <option value="Fruits_Vegetables">Fruits_Vegetables</option>
-                <option value="Sweet_Deserts">Sweet_Deserts</option>
-                <option value="Meat_Poultry">Meat_Poultry</option>
+                <option value="Fruits & Vegetables">Fruits & Vegetables</option>
+                <option value="Sweet & Desserts">Sweet & Desserts</option>
+                <option value="Meat & Poultry">Meat & Poultry</option>
                 <option value="Beverages">Beverages</option>
-                <option value="Dairy_Food">Dairy_Food</option>
-                <option value="Sea_Food">Sea_Food</option>
-                <option value="Grains_Cereals">Grains_Cereals</option>
+                <option value="Dairy Food">Dairy Food</option>
+                <option value="Sea Food">Sea Food</option>
+                <option value="Grains & Cereals">Grains & Cereals</option>
                 <option value="Seeds">Seeds</option>
               </Form.Select>
-              {formik.touched.category && formik.errors.category ? (
-              <p className="text-end text-danger">{formik.errors?.category}</p>
-            ) : null}
+              {formik.touched.category && formik.errors.category && (
+                <div className="invalid-feedback">{formik.errors.category}</div>
+              )}
             </Form.Group>
 
-              <Form.Group className="mb-2" controlId="tag">
-              <Form.Label className="text-dark-emphasis">Tag of Recipe</Form.Label>
+            {/* Tag Field */}
+            <Form.Group className="mb-3" controlId="tag">
+              <Form.Label className="form-label">Tag of Recipe</Form.Label>
               <Form.Select
-                aria-label="Default select example"
+                aria-label="Select recipe tag"
                 name="tag"
                 value={formik.values.tag}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
+                className={`form-input ${
+                  formik.touched.tag && formik.errors.tag
+                    ? "is-invalid"
+                    : ""
+                }`}
               >
-                <option>Select</option>
-                <option value="breakfast">Breakfast</option>
-                <option value="lunch">Lunch</option>
-                <option value="snacks">Snacks</option>
-                <option value="dinner">Dinner</option>
+                <option value="">Select</option>
+                <option value="Breakfast">Breakfast</option>
+                <option value="Lunch">Lunch</option>
+                <option value="Snacks">Snacks</option>
+                <option value="Dinner">Dinner</option>
               </Form.Select>
-              {formik.touched.type && formik.errors.type ? (
-              <p className="text-end text-danger">{formik.errors?.type}</p>
-            ) : null}
+              {formik.touched.tag && formik.errors.tag && (
+                <div className="invalid-feedback">{formik.errors.tag}</div>
+              )}
             </Form.Group>
 
-              <Form.Group className="mb-2" controlId="calories">
-              <Form.Label className=" text-dark-emphasis">
-              Calories
-              </Form.Label>
+            {/* Calories Field */}
+            <Form.Group className="mb-3" controlId="calories">
+              <Form.Label className="form-label">Calories</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter the calories of your recipe"
@@ -220,33 +277,39 @@ console.log("api",api);
                 value={formik.values.calories}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
+                className={`form-input ${
+                  formik.touched.calories && formik.errors.calories
+                    ? "is-invalid"
+                    : ""
+                }`}
               />
-              {formik.touched.calories && formik.errors.calories ? (
-                <p className="text-end text-danger">{formik.errors?.calories}</p>
-              ) : null}
+              {formik.touched.calories && formik.errors.calories && (
+                <div className="invalid-feedback">{formik.errors.calories}</div>
+              )}
             </Form.Group>
 
-            <Form.Group className="mb-2" controlId="image">
-              <Form.Label className=" text-dark-emphasis">Image</Form.Label>
+            {/* Image Field */}
+            <Form.Group className="mb-3" controlId="image">
+              <Form.Label className="form-label">Image</Form.Label>
               <Form.Control
                 type="file"
                 name="image"
-                onChange={(event)=>{
-                  getBase64(event.target.files[0]).then(res=>{
-                    // console.log(res);
-                    formik.setFieldValue("image",res)
-                    
-                  }).catch(err=>console.log(err)
-                  )
+                onChange={(event) => {
+                  const file = event.target.files[0];
+                  if (file) {
+                    formik.setFieldValue("image", file);
+                  }
                 }}
                 accept="image/*"
+                className="form-input"
               />
             </Form.Group>
+
+            {/* Submit Button */}
             <div className="d-flex justify-content-center">
               <Button
                 variant="outline-dark"
                 type="submit"
-                value="submit"
                 disabled={!(formik.dirty && formik.isValid)}
                 className="recipe-submit-button"
               >
@@ -261,3 +324,4 @@ console.log("api",api);
 };
 
 export default RecipeForm;
+
