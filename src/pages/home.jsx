@@ -28,10 +28,10 @@ function HomePage() {
         repeatType: "loop",
         ease: "easeInOut",
       }}
-      className="w-40 h-60 md:w-64 md:h-94 rounded-full overflow-hidden border-4 border-gray-300 shadow-xl shadow-gray-700"
+      className="w-40 h-60 md:w-60 md:h-90 rounded-full overflow-hidden border-4 border-gray-300 shadow-xl shadow-gray-700"
     >
       <img
-        src="https://i.ibb.co/Cpm1Gn1x/hi.jpg"
+        src="suvadeep.jpg"
         alt="Profile"
         className="w-full h-full object-cover"
       />
@@ -67,7 +67,7 @@ function HomePage() {
         }}
       />
     </motion.h2>
-    <motion.p
+    {/* <motion.p
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, delay: 1 }}
@@ -75,7 +75,7 @@ function HomePage() {
     >
       <img src="/star.png" alt="" className="w-15 h-15 md:w-20 md:h-20" />
       Hackerrank
-      </motion.p>
+      </motion.p> */}
   </div>
 </div>
 
