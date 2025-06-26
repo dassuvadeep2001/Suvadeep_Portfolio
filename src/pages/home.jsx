@@ -12,7 +12,7 @@ import { MdEmail, MdLocationPin, MdPhone } from "react-icons/md";
 
 function HomePage() {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center p-6 mt-16 bg-white relative overflow-hidden">
+    <section className="min-h-screen flex flex-col items-center justify-center p-6 mt-16 bg-gray-50 relative overflow-hidden">
 <div className="flex flex-col-reverse md:flex-row items-center justify-center gap-6 md:gap-12 p-4 md:p-8">
    {/* Profile Image */}
    <motion.div
@@ -128,7 +128,7 @@ function HomePage() {
         {/* Bio */}
         <div className="w-full md:w-1/2 text-gray-700 text-center md:text-left">
           <h3 className="text-lg font-semibold mb-2 text-gray-600">Biography</h3>
-          <p className="mb-4">
+          <p className="mb-4 text-justify">
             Hi, I'm Suvadeep, a self-motivated and creative individual with a variety
             of skills and great passion for coding. I have a keen interest towards Web
             Development and Problem-Solving.
@@ -138,15 +138,15 @@ function HomePage() {
         {/* contact */}
       <div className="w-full md:w-1/2 text-gray-700 text-center md:text-left">
   <h3 className="text-lg font-semibold mb-2 text-gray-600">Contact</h3>
-  <div className="flex items-center mb-2 gap-2">
+  <div className="flex items-center mb-2 gap-2 justify-center md:justify-start">
     <MdLocationPin />
     <span>1142/A Haridevpur, Kolkata-82</span>
   </div>
-  <div className="flex items-center mb-2 gap-2">
+  <div className="flex items-center mb-2 gap-2 justify-center md:justify-start">
     <MdEmail />
     <span>suvadeepdas15@gmail.com</span>
   </div>
-  <div className="flex items-center gap-2">
+  <div className="flex items-center gap-2 justify-center md:justify-start">
     <MdPhone />
     <span>+91 9330653173</span>
   </div>

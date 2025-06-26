@@ -44,7 +44,7 @@ const photos = [
 
 const Hobbies = () => {
   return (
-    <section>
+    <section className='bg-gray-50 min-h-screen'>
     <div className="w-full px-6 md:px-16 py-12 mt-8">
         <h1 className="text-2xl font-bold text-center text-gray-800 mb-6 pb-3 border-b-2 border-gray-300">Hobbies</h1>
       <div className="text-center md:mb-16 mb-8">

@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { FaUserGraduate } from "react-icons/fa";
 import { MdSchool, MdBuild, MdWork, MdCardMembership, MdSportsSoccer } from "react-icons/md";
+import { motion } from "framer-motion";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,24 +52,44 @@ function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-white w-full fixed top-16 left-0 shadow-lg py-4 px-6 rounded-b-4xl">
-          <ul className="grid grid-cols-3 gap-4">
-            {navLinks.map((link) => (
-              <li key={link.name} className="text-center">
-                <Link
-                  to={link.path}
-                  onClick={() => setIsOpen(false)}
-                  className={`flex flex-col items-center text-gray-700 font-medium relative p-2 ${
-                    location.pathname === link.path ? "text-black after:absolute after:left-0 after:bottom-[-2px] after:w-full after:h-[1px] after:bg-black" : ""
-                  }`}
-                >
-                  {link.icon}
-                  {link.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+<motion.div
+  className="md:hidden bg-white w-full fixed top-16 left-0 shadow-lg py-4 px-6 rounded-b-2xl"
+  initial={{ y: -20, opacity: 0 }}
+  animate={{ y: 0, opacity: 1 }}
+  exit={{ y: -100, opacity: 0 }}
+  transition={{ type: "spring", stiffness: 100, damping: 20 }}
+>
+  <ul className="grid grid-cols-3 gap-4">
+    {navLinks.map((link) => (
+      <motion.li 
+        key={link.name} 
+        className="text-center"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <Link
+          to={link.path}
+          onClick={() => setIsOpen(false)}
+          className={`flex flex-col items-center text-gray-700 font-medium relative p-2 ${
+            location.pathname === link.path ? "text-black after:absolute after:left-0 after:bottom-[-2px] after:w-full after:h-[1px] after:bg-black" : ""
+          }`}
+        >
+          <motion.span
+            whileHover={{ scale: 1.1 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          >
+            {link.icon}
+          </motion.span>
+          <motion.span
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          >
+            {link.name}
+          </motion.span>
+        </Link>
+      </motion.li>
+    ))}
+  </ul>
+</motion.div>
       )}
     </nav>
   );

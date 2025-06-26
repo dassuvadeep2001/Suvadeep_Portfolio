@@ -79,7 +79,7 @@ const projects = {
 
 const Carousel = ({ title, projects }) => {
   return (
-    <div className="w-full max-w-4xl mx-auto p-6">
+    <div className="w-full max-w-4xl mx-auto p-6 bg-gray-50">
       <h2 className="text-lg font-bold text-gray-600 mb-6 text-center relative">
         <span className="bg-white px-4 py-3 relative z-10 border-b-2 border-gray-300">{title}</span>
         {/* <span className="absolute h-px bg-gray-300 w-full top-1/2 left-0 transform -translate-y-1/2 z-0"></span> */}

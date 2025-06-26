@@ -3,13 +3,13 @@ import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn, FaGithub, FaWhatsapp
 
 const Footer = () => {
   return (
-    <footer className="bg-white text-white py-4">
+    <footer className="bg-white py-4 mt-5">
       <div className="container mx-auto flex flex-col items-center px-4">
-        <div className="mb-6 flex flex-col items-center">
+        <div className="mb-5 flex flex-col items-center">
         <h2 className="text-gray-700 text-xl font-semibold mb-2"><a href="/" className="hover:text-black transition">Suvadeep Das</a></h2>
         <h2 className="text-gray-600 text-sm">MERN Stack Developer</h2>
         </div>
-        <p className="text-gray-600 mb-2">Get in touch</p>
+        <p className="text-gray-600 mb-2 text-xs">Get in touch</p>
         <div className="flex gap-4">
           <a href="https://www.facebook.com/suvadeep.das.5680" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-black transition">
             <FaFacebookF size={15} />
@@ -30,8 +30,8 @@ const Footer = () => {
             <FaWhatsapp size={15} />
           </a>
         </div>
-        <div className="text-center mt-6">
-          <p className="text-sm text-gray-600">
+        <div className="text-center mt-10">
+          <p className="text-xs text-gray-600">
             © {new Date().getFullYear()}{" "}
             <span className="font-semibold text-gray-800">Suvadeep </span>
             | All rights reserved
