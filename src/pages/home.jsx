@@ -55,7 +55,7 @@ function HomePage() {
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, delay: 0.5 }}
-      className="text-xl md:text-2xl font-semibold text-gray-600 mb-2 h-12"
+      className="text-lg md:text-2xl font-semibold text-gray-600 mb-2 h-12"
     >
       <Typewriter
         options={{
