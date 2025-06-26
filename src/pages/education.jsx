@@ -10,7 +10,7 @@ const qualifications = [
     grade: "In Progress",
     },
   {
-    degree: "B.Tech (Bachelor of Technology) in IT (Information Technology)",
+    degree: "Bachelor of Technology in Information Technology",
     institute: "Narula Institute of Technology",
     year: "2019-2023",
     grade: "8.77 CGPA",
@@ -48,7 +48,10 @@ const QualificationPage = () => {
               transition={{ duration: 0.7, delay: index * 0.3 }}
               className="flex items-start gap-4"
             >
-              <GraduationCap className="w-8 h-8 text-gray-700 hover:text-black transition" />
+              <div>
+               <GraduationCap className="w-6 h-6 md:w-8 md:h-8 text-gray-700 hover:text-black transition" />
+              </div>
+              
               <div>
                 <h2 className="text-2xl font-semibold text-gray-700 hover:text-black transition">
                   {item.degree}
@@ -69,7 +72,7 @@ const QualificationPage = () => {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 0.9 }}
-          className="flex-[3] flex flex-col items-center justify-center p-10"
+          className="flex-[3] flex flex-col items-center justify-center p-10 "
         >
           <Briefcase className="w-12 h-12 text-gray-700 mb-4" />
           <h3 className="text-2xl font-semibold text-gray-800 mb-2">

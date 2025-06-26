@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="container mx-auto flex flex-col items-center px-4">
         <div className="mb-6 flex flex-col items-center">
         <h2 className="text-gray-700 text-xl font-semibold mb-2"><a href="/" className="hover:text-black transition">Suvadeep Das</a></h2>
-        <h2 className="text-gray-600 text-sm">Full Stack Developer</h2>
+        <h2 className="text-gray-600 text-sm">MERN Stack Developer</h2>
         </div>
         <p className="text-gray-600 mb-2">Get in touch</p>
         <div className="flex gap-4">

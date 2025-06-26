@@ -8,6 +8,7 @@ import {
   FaTwitter,
   FaGithub,
 } from "react-icons/fa";
+import { MdEmail, MdLocationPin, MdPhone } from "react-icons/md";
 
 function HomePage() {
   return (
@@ -54,11 +55,11 @@ function HomePage() {
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, delay: 0.5 }}
-      className="text-2xl md:text-3xl font-semibold text-gray-700 mb-2 h-12"
+      className="text-xl md:text-2xl font-semibold text-gray-700 mb-2 h-12"
     >
       <Typewriter
         options={{
-          strings: ["A Full Stack Developer", "A Photographer"],
+          strings: ["A MERN Stack Developer","An Artist", "A Photographer"],
           autoStart: true,
           loop: true,
           delay: 70,
@@ -126,7 +127,7 @@ function HomePage() {
       <div className="flex flex-col md:flex-row items-center md:items-start gap-12 w-full max-w-5xl">
         {/* Bio */}
         <div className="w-full md:w-1/2 text-gray-700 text-center md:text-left">
-          <h3 className="text-lg font-semibold mb-2 text-gray-500">Biography</h3>
+          <h3 className="text-lg font-semibold mb-2 text-gray-600">Biography</h3>
           <p className="mb-4">
             Hi, I'm Suvadeep, a self-motivated and creative individual with a variety
             of skills and great passion for coding. I have a keen interest towards Web
@@ -135,24 +136,33 @@ function HomePage() {
         </div>
 
         {/* contact */}
-        <div className="w-full md:w-1/2 text-gray-700 text-center md:text-left">
-          <h3 className="text-lg font-semibold mb-2 text-gray-500">Contact</h3>
-          <p className="mb-2">📍 1142/A Haridevpur, Kolkata-82</p>
-          <p className="mb-2">📧 suvadeepdas15@gmail.com</p>
-          <p>📞 +91 9330653173</p>
-        </div>
+      <div className="w-full md:w-1/2 text-gray-700 text-center md:text-left">
+  <h3 className="text-lg font-semibold mb-2 text-gray-600">Contact</h3>
+  <div className="flex items-center mb-2 gap-2">
+    <MdLocationPin />
+    <span>1142/A Haridevpur, Kolkata-82</span>
+  </div>
+  <div className="flex items-center mb-2 gap-2">
+    <MdEmail />
+    <span>suvadeepdas15@gmail.com</span>
+  </div>
+  <div className="flex items-center gap-2">
+    <MdPhone />
+    <span>+91 9330653173</span>
+  </div>
+</div>
 
         {/* Experience */}
         <div className="w-full md:w-1/3 text-center md:text-left text-gray-800">
-          <h3 className="text-lg font-semibold mb-2 text-gray-500">Year of Experience</h3>
+          <h3 className="text-lg font-semibold mb-2 text-gray-600">Year of Experience</h3>
           <p className="text-2xl font-bold mb-2">0+</p>
           <p className="text-lg mb-4">Open to work</p>
         </div>
          {/* project & skill */}
          <div className="w-full md:w-1/3 text-center md:text-left text-gray-800">
-          <h3 className="text-lg font-semibold mb-2 text-gray-500">Skill</h3>
+          <h3 className="text-lg font-semibold mb-2 text-gray-600">Skill</h3>
           <p className="text-2xl font-bold mb-2">10+</p>
-          <h3 className="text-lg font-semibold mb-2 text-gray-500">Completed Projects</h3>
+          <h3 className="text-lg font-semibold mb-2 text-gray-600">Completed Projects</h3>
           <p className="text-2xl font-bold">5+</p>
         </div>
       </div>

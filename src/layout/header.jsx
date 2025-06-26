@@ -51,7 +51,7 @@ function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-white w-full fixed top-16 left-0 shadow-lg py-4 px-6">
+        <div className="md:hidden bg-white w-full fixed top-16 left-0 shadow-lg py-4 px-6 rounded-b-4xl">
           <ul className="grid grid-cols-3 gap-4">
             {navLinks.map((link) => (
               <li key={link.name} className="text-center">

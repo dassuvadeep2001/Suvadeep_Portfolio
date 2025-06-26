@@ -8,10 +8,12 @@ import Skills from "./pages/skill";
 import CertificatePage from "./pages/certificates";
 import Hobbies from "./pages/hobbies";
 import ProjectsPage from "./pages/project";
+import ScrollToTop from "./layout/scroll";
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Navbar/>
       <Routes>
         <Route path="/" element={<HomePage />} />

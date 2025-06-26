@@ -17,6 +17,7 @@ const skillsData = {
     { name: "JavaScript", level: "Intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
     { name: "React", level: "Intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
     { name: "Next.js", level: "Basic", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+    { name: "TypeScript", level: "Begginer", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
   ],
   Backend: [
     { name: "Node.js", level: "Basic", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
@@ -48,7 +49,7 @@ const Skills = () => {
 
       {Object.entries(skillsData).map(([category, skills]) => (
   <div key={category} className="mb-16">
-    <h3 className="text-2xl font-semibold mb-6 text-gray-700 text-center ">{category}</h3>
+    <h3 className="text-2xl font-semibold mb-6 text-gray-700 text-center">{category}</h3>
     <div className="flex flex-wrap gap-14 justify-center">
       {skills.map((skill) => (
         <SkillCard key={skill.name} {...skill} />
