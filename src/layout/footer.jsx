@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="bg-white py-4 mt-5">
       <div className="container mx-auto flex flex-col items-center px-4">
         <div className="mb-5 flex flex-col items-center">
-        <h2 className="text-gray-700 text-xl font-semibold mb-2"><a href="/" className="hover:text-black transition">Suvadeep Das</a></h2>
+        <h2 className="text-gray-700 text-xl font-semibold mb-2"><a href="/" className="hover:text-black transition">Suvadeep</a></h2>
         <h2 className="text-gray-600 text-sm">MERN Stack Developer</h2>
         </div>
         <p className="text-gray-600 mb-2 text-xs">Get in touch</p>

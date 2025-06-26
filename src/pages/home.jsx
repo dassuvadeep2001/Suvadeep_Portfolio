@@ -45,9 +45,9 @@ function HomePage() {
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
-      className="text-3xl md:text-5xl font-bold text-gray-800 mb-4"
+      className="text-2xl md:text-5xl font-bold text-gray-600 mb-4"
     >
-      Hi, I'm Suvadeep Das
+      Hi, I'm <span className="text-gray-800">Suvadeep Das</span>
     </motion.h1>
 
     {/* Sub Heading */}
@@ -55,7 +55,7 @@ function HomePage() {
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, delay: 0.5 }}
-      className="text-xl md:text-2xl font-semibold text-gray-700 mb-2 h-12"
+      className="text-xl md:text-2xl font-semibold text-gray-600 mb-2 h-12"
     >
       <Typewriter
         options={{
@@ -126,7 +126,7 @@ function HomePage() {
       {/* Bio & Contact & Experience */}
       <div className="flex flex-col md:flex-row items-center md:items-start gap-12 w-full max-w-5xl">
         {/* Bio */}
-        <div className="w-full md:w-1/2 text-gray-700 text-center md:text-left">
+        <div className="w-full md:w-1/2 text-gray-800 text-center md:text-left">
           <h3 className="text-lg font-semibold mb-2 text-gray-600">Biography</h3>
           <p className="mb-4 text-justify">
             Hi, I'm Suvadeep, a self-motivated and creative individual with a variety
@@ -136,7 +136,7 @@ function HomePage() {
         </div>
 
         {/* contact */}
-      <div className="w-full md:w-1/2 text-gray-700 text-center md:text-left">
+      <div className="w-full md:w-1/2 text-gray-800 text-center md:text-left">
   <h3 className="text-lg font-semibold mb-2 text-gray-600">Contact</h3>
   <div className="flex items-center mb-2 gap-2 justify-center md:justify-start">
     <MdLocationPin />
@@ -163,7 +163,7 @@ function HomePage() {
           <h3 className="text-lg font-semibold mb-2 text-gray-600">Skill</h3>
           <p className="text-2xl font-bold mb-2">10+</p>
           <h3 className="text-lg font-semibold mb-2 text-gray-600">Completed Projects</h3>
-          <p className="text-2xl font-bold">5+</p>
+          <p className="text-2xl font-bold">10+</p>
         </div>
       </div>
 
