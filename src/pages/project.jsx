@@ -79,9 +79,9 @@ const projects = {
 
 const Carousel = ({ title, projects }) => {
   return (
-    <div className="w-full max-w-4xl mx-auto p-6 bg-gray-50">
+    <div className="w-full max-w-4xl mx-auto p-6">
       <h2 className="text-lg font-bold text-gray-600 mb-6 text-center relative">
-        <span className="bg-white px-4 py-3 relative z-10 border-b-2 border-gray-300">{title}</span>
+        <span className="px-4 py-3 relative z-10 border-b-2 border-gray-300">{title}</span>
         {/* <span className="absolute h-px bg-gray-300 w-full top-1/2 left-0 transform -translate-y-1/2 z-0"></span> */}
       </h2>
       <Swiper
@@ -121,7 +121,7 @@ const Carousel = ({ title, projects }) => {
 
 const ProjectsPage = () => {
   return (
-    <div className="min-h-screen bg-white p-6 mt-6">
+    <div className="min-h-screen bg-gray-50 p-6 mt-6">
       <h1 className="text-2xl font-bold text-center mb-6 mt-8 border-b-2 border-gray-300 pb-5">My Projects</h1>
       <p className="text-center text-gray-700 mb-2">These are the major & minor projects I have worked on. Below is the link to my github profile, click on it to see more.</p>
       <p className="flex justify-center items-center gap-2 text-gray-600 hover:text-black transition hover:underline mb-6"> 
